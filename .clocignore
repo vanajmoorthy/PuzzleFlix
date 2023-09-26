@@ -1,0 +1,4 @@
+puzzleflix-client/node_modules
+puzzleflix-server/node_modules
+puzzleflix-client/package-lock.json
+puzzleflix-server/package-lock.json

@@ -1,0 +1,6 @@
+.signup-wrapper {
+    height: calc(100vh - 8rem);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}

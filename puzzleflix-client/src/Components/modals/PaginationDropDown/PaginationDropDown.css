@@ -1,0 +1,37 @@
+.sort-select {
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 10px 10px 50px -26px var(--shadow);
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    color: var(--black);
+    background-color: var(--input-grey);
+    width: 200px;
+    font-size: 1rem;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    font-family: canada-type-gibson, sans-serif;
+    margin-right: 1rem;
+}
+
+.sort-select:hover {
+    cursor: pointer;
+}
+
+select::content {
+    color: red;
+}
+
+@media screen and (max-width: 450px) {
+    .sort-select {
+        width: 160px;
+        margin: 0rem;
+        padding: 0.5rem 0.5rem;
+        background-position: right 0.5rem center;
+        margin-top: 0rem;
+        font-size: 0.9rem;
+    }
+}

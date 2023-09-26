@@ -1,0 +1,35 @@
+Calculating levels:
+
+    XP to reach a certain level:
+        xp = 0.875*(level^2)+2.125*(level)
+
+    Get level from total XP:
+        level = (- 17 + sqrt(224*totalXP + 289)) / 14
+
+Milestone Unlocks:
+    lvl 1  ( 3 xp    ) - ability to create puzzles unlocked
+    lvl 5  (~33 xp   ) - primary colour banners
+    lvl 10 (~109 xp  ) - gradient banners 
+    lvl 15 (~228 xp  ) - pattern banners (colour selectable?) 
+    lvl 20 (~393 xp  ) - gold banner
+    lvl 25 ( 600 xp  ) - gold gradient banner
+
+Notes:
+    The max level would be 25, which requires 600 total xp (~completing 200 hard puzzles)
+    If level cap is increased then lvl40 would be 1495 xp 
+
+    Hard puzzles can award 3xp or 2xp with 1 hint used (0xp for any more hints).
+    Medium puzzles award 2xp or 1xp with 1 hint (0xp for any more hints).
+    Easy puzzles award 1xp (0xp if hint used).
+
+    Replaying levels should award 0xp.
+
+    Bonus xp can be awarded, perhaps for completing in a faster than average time o leaving a review
+
+
+LEVEL COLOURS:
+    red   #ff0000
+    green #00ff00
+    blue  #00ffff
+    grey  #eeeeee
+    orange ?

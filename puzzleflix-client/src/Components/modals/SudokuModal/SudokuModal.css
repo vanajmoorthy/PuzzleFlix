@@ -1,0 +1,238 @@
+.row {
+    display: flex;
+    margin: 0px;
+    height: min-content;
+}
+
+.sudoku {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* height: calc(100vh - 8rem); */
+    flex-direction: column;
+    padding: 15px 10px 15px 10px;
+}
+
+.generate-btn {
+    background-color: var(--button-blue-save);
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.create-btns-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.generate-clear-btns-holder {
+    display: flex;
+}
+
+.grid-wrapper {
+    border: 2px solid var(--black);
+}
+
+.row:nth-child(3) {
+    border-bottom: 2px solid var(--black);
+}
+
+.row:nth-child(6) {
+    border-bottom: 2px solid var(--black);
+}
+
+.square:nth-child(3) {
+    border-right: 2px solid var(--black);
+}
+
+.square:nth-child(7) {
+    border-left: 2px solid var(--black);
+}
+
+.input-buttons {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.input-buttons-mobile {
+    margin-bottom: 1rem;
+    display: none;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.input-button {
+    border-radius: 5px;
+
+    font-family: canada-type-gibson, sans-serif;
+    font-weight: 500;
+    padding: 0.5rem;
+    border: none;
+    margin: 0.2rem;
+    height: 40px;
+    width: 40px;
+    border: 1px solid var(--black);
+    background-color: rgb(0, 0, 0, 0);
+    font-family: canada-type-gibson, sans-serif;
+    color: var(--black);
+    font-size: 1.2rem;
+    transition: 0.2s ease all;
+}
+
+.input-button:hover {
+    cursor: pointer;
+    background-color: var(--button-red-hover);
+}
+
+.undo,
+.redo {
+    border: 1px solid var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem;
+    transition: 0.2s ease all;
+    border-radius: 5px;
+    margin: 0px 10px 0px 10px;
+}
+.undo:hover,
+.redo:hover {
+    transform: translateY(-2px);
+}
+
+.history-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    align-items: center;
+    width: 300px;
+}
+.history-button {
+    fill: var(--black);
+    transition: 0.2s ease all;
+}
+
+.history-button:hover {
+    cursor: pointer;
+}
+
+.active {
+    width: 45px;
+    height: 45px;
+    font-weight: 500;
+    font-family: canada-type-gibson, sans-serif;
+    background-color: var(--white);
+    filter: var(--cell-text);
+    color: var(--black);
+}
+
+.square.invalid-square > .active {
+    border: none;
+    filter: brightness(80%);
+    background-color: inherit;
+}
+
+.square {
+    all: unset;
+    width: 45px;
+    height: 45px;
+}
+
+.invalid-square {
+    width: 45px;
+    height: 45px;
+    background-color: rgb(255, 79, 79) !important;
+}
+
+.cell {
+    width: 45px;
+    font-weight: 500;
+    height: 45px;
+    border: 1px dotted var(--black);
+    font-family: canada-type-gibson, sans-serif;
+    background-color: inherit;
+    color: var(--black);
+    transition: 0.2s ease all;
+}
+
+.cell:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+.date > h2 {
+    text-align: center;
+    margin-bottom: 0rem;
+    font-size: 1.1rem;
+    margin: 0 0.5rem;
+}
+
+.date-label {
+    font-weight: 500;
+    color: var(--black);
+}
+
+.f-date {
+    color: var(--grey);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 502px) {
+    .input-buttons {
+        display: none;
+    }
+
+    .input-buttons-mobile {
+        display: flex;
+        max-width: 160px;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+
+    .cell,
+    .active,
+    .square {
+        width: 30px;
+        height: 30px;
+    }
+
+    .puzzlepage-title {
+        /* margin-top: 37vh !important; */
+    }
+
+    .btn-container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .puzzlepage-title {
+        /* margin-top: 24rem !important; */
+    }
+    .cell,
+    .active,
+    .square {
+        width: 27px;
+        height: 27px;
+    }
+
+    .row:nth-child(3) {
+        border-bottom: 2px solid var(--black);
+    }
+
+    .row:nth-child(6) {
+        border-bottom: 2px solid var(--black);
+    }
+
+    .square:nth-child(3) {
+        border-right: 2px solid var(--black);
+    }
+
+    .square:nth-child(7) {
+        border-left: 2px solid var(--black);
+    }
+}

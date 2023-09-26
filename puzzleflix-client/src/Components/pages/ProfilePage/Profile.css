@@ -1,0 +1,306 @@
+.profilepage-wrapper {
+    background-color: var(--white);
+    margin: auto;
+    font-family: canada-type-gibson, sans-serif;
+    padding-bottom: 2rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+.level-ring {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.pfp {
+    max-width: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border: 1px solid var(--black);
+    border-radius: 50%;
+}
+
+.profile-container {
+    position: relative;
+    display: inline-block;
+}
+
+.pfpFrame {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.changePfp {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: green;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.changePfp::before {
+    content: "+";
+    font-size: 20px;
+    color: white;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.sub-line {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.profile-title {
+    font-size: 2rem;
+    font-family: canada-type-gibson, sans-serif;
+    width: max-content;
+    margin: auto;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    border-bottom: 4px solid var(--button-red);
+}
+
+.profile-item {
+    border: none;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 1.5rem 3rem;
+    margin: 0rem 1rem 2rem 1rem;
+}
+
+.underline {
+    font-family: canada-type-gibson, sans-serif;
+    font-weight: 500;
+}
+
+.username {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.light {
+    font-family: canada-type-gibson, sans-serif;
+    font-weight: 400;
+}
+
+.username > h1 {
+    margin-left: 0.5rem;
+    font-weight: 600;
+    font-family: canada-type-gibson, sans-serif;
+}
+
+.bio-item {
+    display: flex;
+    justify-content: center;
+}
+
+.bio {
+    color: var(--black);
+    width: max-content;
+    box-shadow: 20px 20px 99px -26px var(--shadow);
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    margin: 0rem 1.5rem;
+    background-color: var(--white);
+}
+
+.elevation {
+    max-width: min-content;
+    background-color: var(--link-blue);
+    color: white;
+    font-family: canada-type-gibson, sans-serif;
+    padding: 0.2rem 0.7rem;
+    margin-top: 0.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+.row-two-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+}
+.row-two-item > h2 {
+    font-size: 1.5rem;
+    font-weight: 700 !important;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createpuzzle-btn {
+    color: white;
+    border-radius: 5px;
+    background-color: var(--button-red);
+    border: none;
+    padding: 0.4rem 0.7rem;
+    margin: auto;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-family: canada-type-gibson, sans-serif;
+    width: max-content;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    transition: 0.2s ease all;
+}
+
+.createpuzzle-btn > img {
+    margin-left: 0.5rem;
+}
+
+.createpuzzle-btn:hover {
+    background-color: rgb(202, 1, 1);
+}
+
+.createpuzzle-btn:active {
+    transform: scale(0.9);
+}
+
+.none {
+    font-family: canada-type-gibson, sans-serif;
+    margin: auto;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--black);
+}
+
+.logout-btn {
+    color: white;
+    background-color: var(--button-red);
+    border: none;
+    border-radius: 5px;
+    padding: 0.4rem 0.7rem;
+    margin: auto;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-family: canada-type-gibson, sans-serif;
+    width: max-content;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+    transition: 0.2s ease all;
+}
+
+.logout-btn:hover {
+    cursor: pointer !important;
+    background-color: var(--button-red-hover) !important;
+}
+
+.logout-btn > img {
+    margin-left: 0.5rem;
+}
+
+.logout-btn:active {
+    transform: scale(0.9);
+}
+
+@media screen and (max-width: 500px) {
+    .username {
+        flex-direction: column;
+    }
+
+    .username > h1 {
+        margin-left: 0rem;
+    }
+
+    h2 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+    }
+
+    .bio {
+        max-width: 100%;
+    }
+}
+
+.circle {
+    height: 80px;
+    width: 80px;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: #00ffff;
+    outline: 2px solid black;
+}
+
+.inner-circle {
+    height: 68px;
+    width: 68px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: #eeeeee;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid black;
+}
+
+.inner-circle-new {
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-text {
+    display: block;
+    text-align: center;
+}
+
+.level-label {
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.level-text {
+    font-size: 24px;
+}
+
+.xp-label {
+    font-size: 10px;
+    margin-top: -2px;
+    margin-bottom: -5px;
+}

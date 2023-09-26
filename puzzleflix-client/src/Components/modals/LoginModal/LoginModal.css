@@ -1,0 +1,193 @@
+.loginmodal-outer-wrapper {
+    margin: auto;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+.loginmodal-inner-wrapper {
+    padding: 1rem;
+    text-align: center;
+}
+
+.login-element {
+    height: 33px;
+    font-family: canada-type-gibson, sans-serif;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.login-element-row {
+    height: 53px;
+    font-family: canada-type-gibson, sans-serif;
+    font-weight: 400;
+    display: flex;
+    gap: 1rem;
+}
+
+.row {
+    height: 53px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: canada-type-gibson, sans-serif;
+    color: var(--black);
+}
+
+.error-msg {
+    color: var(--button-red);
+}
+
+.byline {
+    font-size: 1rem;
+    font-family: canada-type-gibson, sans-serif;
+    color: rgb(97, 97, 97);
+    margin: 0 6rem 1.5rem 6rem;
+    font-weight: 500;
+}
+
+.text-input {
+    text-align: left;
+    border-radius: 5px;
+    border: none;
+    margin: 1rem 0;
+    padding: 1rem 1rem;
+    background-color: var(--input-grey);
+    color: var(--black);
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.text-input::placeholder {
+    font-family: canada-type-gibson, sans-serif;
+    font-weight: 400;
+}
+
+.relative {
+    position: relative;
+}
+
+.pass-show {
+    position: absolute;
+    right: 12px;
+    top: 28px;
+    border: none;
+    transition: 0.2s ease all;
+    background-color: var(--input-grey);
+}
+
+.pass-show:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.pass-show:active {
+    transform: scale(0.9);
+}
+
+.pass-show-btn {
+    height: 30px;
+}
+
+.registration {
+    color: var(--black);
+    font-size: 1rem;
+    margin-top: 4rem;
+    font-family: canada-type-gibson, sans-serif;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.link-hover {
+    font-size: 1rem;
+    font-family: canada-type-gibson, sans-serif;
+    text-decoration: none;
+    color: var(--link-blue);
+    transition: 0.2s ease all;
+}
+
+.link-hover:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(0, 114, 175);
+}
+
+.group-select {
+    text-align: left;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 1rem;
+    margin-top: 1rem;
+    color: var(--black);
+    background-color: var(--input-grey);
+    width: 100%;
+    font-size: 1rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    font-family: canada-type-gibson, sans-serif;
+}
+
+.login-btn {
+    color: white;
+    background-color: var(--button-red);
+
+    text-decoration: none;
+    font-size: 1rem;
+
+    margin-top: 1rem;
+    padding: 1rem 1rem;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s ease all;
+    width: 100%;
+    font-family: canada-type-gibson, sans-serif;
+}
+
+.login-btn:hover {
+    background-color: var(--button-red-hover);
+    cursor: pointer;
+}
+
+.login-btn:active {
+    transform: scale(0.9);
+}
+
+@media screen and (max-width: 610px) {
+    .pass-reset {
+        right: 0;
+        top: 176px;
+    }
+
+    .byline {
+        margin: 0;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .title {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .title {
+        font-size: 1.5rem;
+    }
+}
+
+.errors {
+    max-width: 500px;
+    margin: auto;
+}
+
+.errors li {
+    list-style-type: none;
+    margin: 0.7rem 0rem;
+    color: var(--button-red);
+}

@@ -1,0 +1,226 @@
+.eights-row {
+    display: flex;
+    margin: 0px;
+    height: min-content;
+}
+
+.eights {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.eights-active {
+    filter: brightness(80%);
+    color: var(--black);
+    padding: 2px;
+}
+
+.eights-border {
+    border: 1px solid var(--black);
+}
+
+.eights-active span {
+    margin: auto;
+}
+
+.eights-square {
+    width: 120px;
+    height: 120px;
+    margin: 0px 0px;
+    background-color: var(--cell-grey);
+}
+
+.eights-cell {
+    width: 40px;
+    font-weight: 500;
+    height: 40px;
+    font-family: canada-type-gibson, sans-serif;
+    background-color: inherit;
+    color: black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 5px;
+    border: 0px;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+}
+
+.eights-active {
+    width: 40px;
+    font-weight: 500;
+    height: 40px;
+    font-family: canada-type-gibson, sans-serif;
+    background-color: inherit;
+    color: black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 5px;
+    border: 1px solid var(--black);
+
+    color: black;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+}
+
+/* ---------- Eights Toggle Styling ------------- */
+
+.eights-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.eights-toggles {
+    margin-top: 10px;
+    color: var(--black);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.eights-toggles > input {
+    margin-right: 0.5rem;
+}
+.eights-toggles > input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+        inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+}
+
+.eights-toggles > input:active,
+.eights-toggles > input:checked:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+        inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.eights-toggles > input:checked {
+    background-color: #e9ecee;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+        inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),
+        inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+    color: #99a1a7;
+}
+
+.eights-toggles > input:checked:after {
+    content: "\2713";
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #99a1a7;
+}
+
+.big-checkbox {
+    padding: 18px;
+}
+
+.big-checkbox:checked:after {
+    font-size: 28px;
+    left: 6px;
+}
+
+.eights-toggles-item {
+    margin: 2px;
+    display: inline-block;
+}
+
+.show-puzzle {
+    /* background-color:var(--black); */
+    padding: 7px 7px 5px 7px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.show-puzzle > img {
+    width: 20px;
+}
+
+.show-puzzle:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.eights-cell span {
+    margin: auto;
+}
+
+.cell:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+.eights-upload {
+    margin-top: 20px;
+    color: var(--black);
+}
+.upload-button {
+    min-width: 120px;
+    font-family: canada-type-gibson, sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    /* margin-top: 0.5rem; */
+    background-color: var(--button-blue-save);
+    /* border-radius: 5px; */
+    padding: 0.5rem 0.7rem;
+    transition: 0.2s ease all;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 5px;
+}
+
+.upload-button:hover {
+    cursor: pointer;
+    background-color: var(--button-blue-save-hover);
+}
+
+@media screen and (max-width: 502px) {
+    .input-buttons {
+        display: none;
+    }
+
+    .input-buttons-mobile {
+        display: flex;
+        max-width: 160px;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+
+    .cell,
+    .active,
+    .square {
+        width: 30px;
+        height: 30px;
+    }
+
+    .btn-container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .cell,
+    .active,
+    .square {
+        width: 27px;
+        height: 27px;
+    }
+}

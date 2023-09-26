@@ -1,0 +1,109 @@
+.thumbnail-wrapper {
+    margin-right: 2rem;
+    box-shadow: 10px 10px 50px -26px var(--shadow);
+    padding: 2rem;
+    transition: 0.2s ease all;
+    width: max-content;
+    background-color: var(--white);
+    border: 3px solid black;
+
+    border-width: 3px;
+}
+
+.puzzle-thumbnail {
+    border: 3px solid black;
+    width: min-content;
+    margin: auto;
+}
+
+.thumbnail-link {
+    text-decoration: none;
+    height: min-content;
+}
+
+.image-thumb {
+    background-size: 200px 200px;
+    transition: 0.2s ease all;
+    width: 66px !important;
+    height: 66px !important;
+    border: 0px;
+}
+
+.next {
+    transition: 0.5s ease all;
+    transform: translateX(-700px);
+}
+
+.prev {
+    transition: 0.5s ease all;
+    transform: translateX(700px);
+}
+
+.thumbnail-link:hover .thumbnail-wrapper {
+    transform: translateY(-10px);
+    box-shadow: 20px 20px 50px -26px rgb(45, 45, 45);
+}
+
+.thumbnailpuzzle-name {
+    font-weight: 500;
+    text-align: center;
+    color: var(--black);
+    margin-bottom: 1rem;
+    font-size: large;
+    font-family: canada-type-gibson, sans-serif;
+}
+
+.t-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.t-cell {
+    width: 22px;
+    height: 22px;
+    color: var(--black);
+    border: 1px dotted var(--black);
+    background-color: var(--thumbnail);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.t-row:nth-child(4) {
+    border-top: 2px solid var(--black);
+}
+
+.t-row:nth-child(6) {
+    border-bottom: 2px solid var(--black);
+}
+
+.t-cell:nth-child(4) {
+    border-left: 3px solid var(--black);
+}
+
+.t-cell:nth-child(7) {
+    border-left: 3px solid var(--black);
+}
+
+@media screen and (max-width: 500px) {
+    .thumbnail-wrapper {
+        margin-right: 1rem;
+        padding: 1rem;
+    }
+
+    .image-thumb {
+        background-size: 150px 150px;
+        transition: 0.2s ease all;
+        width: 50px !important;
+        height: 50px !important;
+        border: 0px;
+    }
+
+    .t-cell {
+        width: 15px;
+        height: 15px;
+    }
+}

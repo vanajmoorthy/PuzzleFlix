@@ -1,0 +1,88 @@
+/* Define colours for light and dark themes respectively. 
+These colours are swapped when the theme is switched to dark 
+mode with the ones defined below. */
+
+.light {
+    --rating-title-color: red;
+    --link-blue: #1da7ea;
+    --link-blue-hover: #1893d1;
+    --input-grey: rgb(231, 227, 227);
+    --cell-grey: #d5d5d5;
+    --grey: #616060;
+    --button-red: red;
+    --button-red-hover: rgb(202, 1, 1);
+    --button-orange: #f05b25;
+    --button-orange-hover: #d45425;
+    --button-green: #22b936;
+    --button-green-hover: #1a972b;
+    --button-blue-save: #3099ce;
+    --button-blue-save-hover: #1c7aa8;
+    --white: #ffffff;
+    --black: black;
+    --thumb-background: #eee;
+    --shadow: #5c5c5c;
+    --chess-red: #fc8181;
+    --chess-grey: #d6d6d6;
+    --blur: rgba(255, 255, 255, 0.5);
+    --cell-text: brightness(80%);
+    --puzzle-shadow: rgba(70, 70, 70, 0.3);
+    --thumbnail: white;
+    --comments-filter: none;
+}
+
+.dark {
+    /* black */
+    --chess-red: #ff5f5f;
+    --blur: rgba(0, 0, 0, 0.5);
+    --chess-grey: #545151;
+    --grey: #c4c4c4;
+    --white: #101010;
+    --black: #fff;
+    --cell-grey: #3d3d3d;
+    --input-grey: rgb(45, 44, 44);
+    --link-blue: #1da7ea;
+    --link-blue-hover: #1893d1;
+    --button-red: red;
+    --button-red-hover: rgb(202, 1, 1);
+    --button-orange: #f05b25;
+    --button-orange-hover: #d45425;
+    --button-green: #22b936;
+    --button-green-hover: #1a972b;
+    --button-blue-save: #3099ce;
+    --button-blue-save-hover: #1c7aa8;
+    --thumb-background: #202020;
+    --shadow: #000;
+    --cell-text: invert(100%);
+    --puzzle-shadow: rgba(50, 50, 50, 0.3);
+    --thumbnail: #2c2c2c;
+    --comments-filter: invert(100%);
+}
+
+h1 {
+    color: var(--black);
+}
+
+body {
+    background-color: var(--white);
+}
+
+.App {
+    background-color: var(--white);
+}
+
+.theme {
+    border: none;
+    padding: 0;
+    background-color: inherit;
+    margin-right: 1rem;
+    transform: 0.2s ease all;
+}
+
+.theme:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.theme:active {
+    scale: 0.9;
+}

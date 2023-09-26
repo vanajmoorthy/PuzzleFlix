@@ -1,0 +1,68 @@
+.eight-queen-holder {
+    height: calc(100vh - 10rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.eight-queen-row {
+    display: flex;
+}
+.eight-queen-element {
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-eight {
+    border: 1px solid var(--black);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dark-square {
+    background-color: var(--chess-red);
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 1rem;
+}
+
+.btn-holder {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.queen-counter {
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.light-square {
+    background-color: var(--chess-grey);
+}
+
+.queen-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.queen {
+    width: 90%;
+    height: auto;
+}
+
+@media screen and (max-width: 640px) {
+    .eight-queen-element {
+        height: calc(100vw / 9);
+        width: calc(100vw / 9);
+    }
+}

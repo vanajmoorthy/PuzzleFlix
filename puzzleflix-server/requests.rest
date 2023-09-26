@@ -1,0 +1,7 @@
+#GET http://localhost:24100/fedapi/auth/authorise?response_type=code&redirect_uri=www.example.com&client_id=15&state=c
+
+
+#GET http://localhost:24100/fedapi/auth/redirect/15?code=1ae2c74bf34f0aa96e569f39c5fdc1d1692ac887
+
+
+GET http://localhost:24100/fedapi/sudoku?0

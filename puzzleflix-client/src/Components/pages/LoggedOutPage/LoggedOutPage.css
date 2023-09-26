@@ -1,0 +1,23 @@
+.loggedout-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    max-width: 400px;
+}
+
+.loggedout-title {
+    font-size: 30px;
+}
+
+.loggedout-img {
+    max-width: 300px;
+    margin: 10px;
+}
+
+.btn {
+    max-width: 200px;
+}
+

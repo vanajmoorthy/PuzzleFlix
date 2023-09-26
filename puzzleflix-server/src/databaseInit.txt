@@ -1,0 +1,63 @@
+CREATE TABLE IF NOT EXISTS users (
+    userid VARCHAR(200) NOT NULL,
+    username TEXT(200) NOT NULL,
+    fname TEXT(200) NOT NULL,
+    sname TEXT(200) NOT NULL,
+    email TEXT(200) NOT NULL,
+    password TEXT(200) NOT NULL,
+    accountelevation INT NOT NULL, 
+    groupcreated INT NOT NULL, 
+    avatar TEXT(200) NOT NULL, 
+    lastloggedin TEXT(200) NOT NULL, 
+    online INT NOT NULL, 
+    datecreated TEXT(200) NOT NULL,
+    bio TEXT(200) NOT NULL,
+    xp INT NOT NULL,
+    private INT NOT NULL,
+    PRIMARY KEY (userid)
+);
+NEW_QUERY
+CREATE TABLE IF NOT EXISTS puzzles (
+    puzzleid VARCHAR(200) NOT NULL,
+    puzzlename TEXT(200) NOT NULL,
+    puzzledata TEXT(200) NOT NULL,
+    difficulty INT NOT NULL,
+    solution TEXT(200) NOT NULL,
+    datepublished TEXT(200) NOT NULL,
+    author TEXT(200) NOT NULL,
+    puzzletype TEXT(200) NOT NULL,
+    titleCSS TEXT(200) NOT NULL, 
+    puzzleRating FLOAT(3,1) DEFAULT 0.0,
+    puzzleImage TEXT(200) NOT NULL,
+    PRIMARY KEY(puzzleid)
+);
+NEW_QUERY
+CREATE TABLE IF NOT EXISTS user_puzzle (
+    userid VARCHAR(200) NOT NULL,
+    puzzleid VARCHAR(200) NOT NULL,
+    puzzledata TEXT(200),
+    issolved INT NOT NULL, 
+    hassolved INT NOT NULL,
+    date TEXT(200) NOT NULL,
+    previousscores TEXT(200),
+    previoustimes TEXT(200),
+    userrating INT,
+    PRIMARY KEY(userid, puzzleid),
+    CONSTRAINT fk_userid
+    FOREIGN KEY(userid) REFERENCES users(userid),
+    CONSTRAINT fk_puzzleid
+    FOREIGN KEY(puzzleid) REFERENCES puzzles(puzzleid)
+);
+NEW_QUERY
+CREATE TABLE IF NOT EXISTS comments (
+    commentid VARCHAR(200) NOT NULL,
+    userid VARCHAR(200) NOT NULL,
+    puzzleid VARCHAR(200) NOT NULL,
+    dateposted TEXT(200) NOT NULL,
+    commentdata TEXT(200) NOT NULL,
+    PRIMARY KEY(commentID),
+    CONSTRAINT fk_useridc
+    FOREIGN KEY(userid) REFERENCES users(userid),
+    CONSTRAINT fk_puzzleidc
+    FOREIGN KEY(puzzleid) REFERENCES puzzles(puzzleid)
+);
