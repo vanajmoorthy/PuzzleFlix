@@ -1,7 +1,7 @@
 # PuzzleFlix
 
 Group 15's CS3099 SWE final project.
-A puzzle playing website where you can play sudoku, multple eights puzzles, and the eight queens puzzle.
+A puzzle playing website where you can play sudoku, multiple eights puzzles, and the eight queens puzzle.
 
 The git repository for this project can be found at [https://gitlab.cs.st-andrews.ac.uk/cs3099group15/project-code](https://gitlab.cs.st-andrews.ac.uk/cs3099group15/project-code)
 
