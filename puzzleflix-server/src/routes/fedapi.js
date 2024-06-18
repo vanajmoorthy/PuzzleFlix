@@ -32,12 +32,24 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 if (environment == "LOCAL") {
-    router.use(
-        cors({
-            origin: origins, // <-- location of the react app were connecting to
-            credentials: true,
-        })
-    );
+    const corsOptions = {
+        origin: function (origin, callback) {
+            if (['http://127.0.2.2:24600', 'http://localhost:3000'].includes(origin) || !origin) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
+        credentials: true
+    };
+    router.use(cors(corsOptions));
+
+    // router.use(
+    //     cors({
+    //         origin: origins, // <-- location of the react app were connecting to
+    //         credentials: true,
+    //     })
+    // );
 } else if (environment == "PRODUCTION") {
     router.use(cors());
 } else {
@@ -98,11 +110,11 @@ router.get("/auth/authorise", async (req, res) => {
             if (response_type.localeCompare("code") == 0) {
                 res.redirect(
                     "/FedLogin/?redirect_uri=" +
-                        redirect_uri +
-                        "&client_id=" +
-                        client_id +
-                        "&state=" +
-                        state
+                    redirect_uri +
+                    "&client_id=" +
+                    client_id +
+                    "&state=" +
+                    state
                 );
             }
         } else {
@@ -180,7 +192,7 @@ router.get("/auth/redirect/:server_id", async (req, res) => {
             let access_token = res1.data.access_token;
 
             let expiry = parseJwt(access_token).iat + 1000000;
-            
+
             if (
                 access_token == "" ||
                 access_token == null ||
@@ -205,16 +217,16 @@ router.get("/auth/redirect/:server_id", async (req, res) => {
                 res.redirect(
                     302,
                     "https://cs3099user15.host.cs.st-andrews.ac.uk/?fedapi=1&username=" +
-                        user.username +
-                        "&userid=" +
-                        user.id +
-                        "&email=" +
-                        user.email +
-                        "&group=" +
-                        user.group +
-                        "&access_token=" +
-                        access_token + 
-                        "&expiry=" + expiry
+                    user.username +
+                    "&userid=" +
+                    user.id +
+                    "&email=" +
+                    user.email +
+                    "&group=" +
+                    user.group +
+                    "&access_token=" +
+                    access_token +
+                    "&expiry=" + expiry
                 );
             } catch (err) {
                 res.status(500).send(new Error("Failure"));
@@ -355,7 +367,7 @@ const sortJsonDiff = (puzzles, mode) => {
 };
 
 router.get("/fedpuzzles", async (req, res) => {
-    
+
     const { count, index, mode } = req.query;
 
     let puzzles = [];
@@ -365,7 +377,7 @@ router.get("/fedpuzzles", async (req, res) => {
     for (group of groups) {
         try {
             const res = await axios({
-                timeout:60,
+                timeout: 60,
                 method: "GET",
                 withCredentials: true,
                 params: {
@@ -380,7 +392,7 @@ router.get("/fedpuzzles", async (req, res) => {
         }
     }
 
-    console.log("TEST ONE")
+    console.log("TEST ONE");
 
     // Sort array of puzzles
     if (mode == "orderByDifficultyAsc") {
@@ -389,7 +401,7 @@ router.get("/fedpuzzles", async (req, res) => {
         puzzles = sortJsonDiff(puzzles, -1);
     } else if (mode == "orderByNameAsc") {
         puzzles = sortJsonID(puzzles, 1);
-    } else  {
+    } else {
         puzzles = sortJsonID(puzzles, -1);
     }
 

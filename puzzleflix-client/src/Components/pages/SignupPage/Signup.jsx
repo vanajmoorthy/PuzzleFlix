@@ -53,6 +53,8 @@ function SignupPage(props) {
 
         // Send data to back end for authentication
         try {
+            console.log(fullurl + "/signup");
+
             const res = await Axios({
                 method: "POST",
                 data: {
@@ -66,7 +68,6 @@ function SignupPage(props) {
                 url: fullurl + "/signup",
             });
             let data = res.data;
-
             let accessToken = data.accessToken;
             let refreshToken = data.refreshToken;
             let accessTokenExpiry = new Date(data.accessExpiryDate);

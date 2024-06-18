@@ -18,18 +18,34 @@ const environment = process.env.APP_ENVIRONMENT;
 //------------------------Middleware-------------------------
 // Middleware
 
-console.log(origins);
+// console.log(origins);
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 if (environment == "LOCAL") {
-    router.use(
-        cors({
-            origin: origins, // <-- location of the react app were connecting to
-            credentials: true,
-        })
-    );
+    const corsOptions = {
+        origin: function (origin, callback) {
+            if (['http://127.0.2.2:24600', 'http://localhost:3000'].includes(origin) || !origin) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
+        credentials: true
+    };
+    router.use(cors(corsOptions));
+
+
+
+
+
+    // router.use(
+    //     cors({
+    //         origin: origins, // <-- location of the react app were connecting to
+    //         credentials: true,
+    //     })
+    // );
 } else if (environment == "PRODUCTION") {
     router.use(cors());
 } else {
@@ -39,7 +55,7 @@ if (environment == "LOCAL") {
 //-----------------------------------------------------------
 
 router.get("/getBoard", async (req, res) => {
-    console.log("GETBOARD")
+    console.log("GETBOARD");
     db.resumeOrNewQueens(req.query.uid, function (callback) {
         console.log(callback[1]);
         res.json(callback[1].progress);

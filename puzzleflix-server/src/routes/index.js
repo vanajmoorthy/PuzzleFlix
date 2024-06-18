@@ -28,18 +28,30 @@ const environment = process.env.APP_ENVIRONMENT;
 //------------------------Middleware-------------------------
 // Middleware
 
-console.log(origins);
+// console.log(origins);
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 if (environment == "LOCAL") {
-    router.use(
-        cors({
-            origin: origins, // <-- location of the react app were connecting to
-            credentials: true,
-        })
-    );
+    const corsOptions = {
+        origin: function (origin, callback) {
+            if (['http://127.0.2.2:24600', 'http://localhost:3000'].includes(origin) || !origin) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
+        credentials: true
+    };
+    router.use(cors(corsOptions));
+
+    // router.use(
+    //     cors({
+    //         origin: origins, // <-- location of the react app were connecting to
+    //         credentials: true,
+    //     })
+    // );
 } else if (environment == "PRODUCTION") {
     router.use(cors());
 } else {
@@ -58,6 +70,7 @@ const parseJwt = (token) => {
 };
 
 router.post("/signup", async (req, res) => {
+    console.log(req.body);
     try {
         db.checkUsernameEmail(
             [req.body.username, req.body.email],
@@ -93,12 +106,13 @@ router.post("/signup", async (req, res) => {
                     db.addNewUser(values, async (error, result) => {
                         console.log("Here");
                         if (error) {
+                            console.log(error);
                             res.status(500).send("Error Check Details!");
                         } else {
                             console.log(
                                 "User " +
-                                    req.body.username +
-                                    " has been registered."
+                                req.body.username +
+                                " has been registered."
                             );
                             let tokens = jwtTokens.jwtTokens(
                                 id,
@@ -122,6 +136,7 @@ router.post("/signup", async (req, res) => {
 }); //end post
 
 router.post("/login", async (req, res) => {
+    console.log("whatever");
     try {
         const { username, password } = req.body;
 
@@ -222,7 +237,7 @@ router.post("/searchUsers", (req, res) => {
 
 // Get paginated and sorted puzzles for content belt
 router.post("/paginatedpuzzle", (req, res) => {
-    
+
     // For retreiving from all puzzles
     if (req.body.type == "puzzles" || req.body.type == "eights") {
         db.getPuzzlesFrom(
@@ -326,7 +341,7 @@ router.post("/paginatedpuzzle", (req, res) => {
                 }
             }
         );
-        console.log("done")
+        console.log("done");
     }
 });
 
@@ -398,7 +413,7 @@ router.post("/addPuzzle", authorization.authenticateToken, (req, res) => {
     if (puzzle.puzzletype == "sudoku") {
         let board = JSON.parse(JSON.stringify(puzzle.puzzledata));
         sudokusolver.runSolver(board, (callback) => {
-            let id = uuidv1()
+            let id = uuidv1();
 
             //console.log("here")
 
@@ -416,7 +431,7 @@ router.post("/addPuzzle", authorization.authenticateToken, (req, res) => {
                     0, // Rating
                     puzzle.puzzleImage, // Puzzle Image URL
                 ];
-            
+
                 db.addPuzzle(values, (callback) => {
                     if (callback == true) {
                         res.status(200).send([true, id]);
@@ -431,7 +446,7 @@ router.post("/addPuzzle", authorization.authenticateToken, (req, res) => {
     }
 
     else {
-        let id = uuidv1()
+        let id = uuidv1();
         let values = [
             id, // ID
             puzzle.puzzlename, // Name
@@ -445,7 +460,7 @@ router.post("/addPuzzle", authorization.authenticateToken, (req, res) => {
             0, // Rating
             puzzle.puzzleImage, // Puzzle Image URL
         ];
-        
+
         db.addPuzzle(values, (callback) => {
             if (callback == true) {
                 res.status(200).send([true, id]);
@@ -455,7 +470,7 @@ router.post("/addPuzzle", authorization.authenticateToken, (req, res) => {
         });
     }
 
-    
+
 });
 
 // delete a puzzle
@@ -503,7 +518,7 @@ router.post("/addRating", authorization.authenticateToken, (req, res) => {
     let data = req.body;
     let puzzledata = JSON.stringify(data.puzzle.puzzledata);
     let userid = parseJwt(req.body.accessToken).userid;
-    
+
     let values = [data.userrating, userid, data.puzzleid, puzzledata];
 
     db.updateRatings(values, (callback) => {
@@ -727,13 +742,13 @@ router.use("/uploads", express.static("uploads"));
 router.post("/generateRandomSudoku", (req, res) => {
 
     const board = sudokusolver.generateRandomSudoku();
-        if (board == null) {
-            res.status(500).send(new Error("SOLUTION NOT FOUND"));
-        } else {
-            res.status(200).json(board);
-            console.log("puzzle generator returned a solution");
-        }
-    
+    if (board == null) {
+        res.status(500).send(new Error("SOLUTION NOT FOUND"));
+    } else {
+        res.status(200).json(board);
+        console.log("puzzle generator returned a solution");
+    }
+
 });
 
 module.exports = router;

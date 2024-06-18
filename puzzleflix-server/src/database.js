@@ -18,16 +18,16 @@ const getCurrentDT = (callback) => {
 
     callback(
         year +
-            "-" +
-            month +
-            "-" +
-            date +
-            " " +
-            hours +
-            ":" +
-            minutes +
-            ":" +
-            seconds
+        "-" +
+        month +
+        "-" +
+        date +
+        " " +
+        hours +
+        ":" +
+        minutes +
+        ":" +
+        seconds
     );
 };
 
@@ -316,7 +316,7 @@ const addNewUser = (values, callback) => {
 
     // Add user to database (already checked in this version)
     let query =
-        "INSERT INTO users VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING *";
+        "INSERT INTO users VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     pool.query(query, values, (err, res) => {
         callback(err, res);
@@ -351,7 +351,7 @@ const deletePuzzle = (value, callback) => {
         } else {
             console.log(
                 "deleted all the comments to this puzzle with the id " +
-                    puzzleid
+                puzzleid
             );
         }
     });
@@ -363,7 +363,7 @@ const deletePuzzle = (value, callback) => {
         } else {
             console.log(
                 "deleted all the user progress to this puzzle with the id " +
-                    puzzleid
+                puzzleid
             );
         }
     });
@@ -629,7 +629,7 @@ const puzzlesByUser = (id, callback) => {
  * @param {*} callback
  */
 const puzzlesByUserFrom = (id, start, count, mode, callback) => {
-    console.log("magic")
+    console.log("magic");
     let query = "SELECT * FROM puzzles WHERE puzzles.author = (?)";
     if (mode.includes("orderByDifficulty")) {
         if (mode.includes("Desc")) query = query + " ORDER BY difficulty DESC";
@@ -679,7 +679,6 @@ const puzzlesByUserFrom = (id, start, count, mode, callback) => {
 };
 
 /**
-<<<<<<< HEAD
  * Retrieves all puzzles that a user has created in a paginated and ordered manner 
  * USES USERNAME INSTEAD OF ID!!!!
  * @param {*} id        : USER ID 
@@ -693,10 +692,10 @@ const puzzlesByUserFromName = (id, start, count, mode, callback) => {
     getUsers(id, function (err, res) {
         if (!err) {
             res = eval(JSON.parse(JSON.stringify(res)))[0].userid;
-            console.log("id",res)
+            console.log("id", res);
             puzzlesByUserFrom(res, start, count, mode, function (callback2) {
-                console.log("yay")
-                callback(callback2)
+                console.log("yay");
+                callback(callback2);
             });
         }
     });
@@ -704,9 +703,6 @@ const puzzlesByUserFromName = (id, start, count, mode, callback) => {
 
 /**
  * Updates database to reflect a user solving and submitting a puzzle 
-=======
- * Updates database to reflect a user solving and submitting a puzzle
->>>>>>> a60958ba8e574ab2ae55943b09462c13f52abf67
  * @param {*} inValues  : [userid, puzzleid, issolved, hassolved, puzzledata, date, previousscores, previoustimes, userrating]
  * @param {*} callback
  */
@@ -1100,7 +1096,7 @@ const resumeOrNew = (values, callback) => {
                         res2[0].difficulty = res[0].difficulty;
                         res2[0].progress = res2[0].puzzledata;
                         res2[0].puzzledata = res[0].puzzledata;
-                        res2[0].datepublished = res[0].datepublished
+                        res2[0].datepublished = res[0].datepublished;
 
                         callback([true, res2[0]]);
                     } else {
