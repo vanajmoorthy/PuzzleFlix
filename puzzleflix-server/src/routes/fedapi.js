@@ -216,7 +216,7 @@ router.get("/auth/redirect/:server_id", async (req, res) => {
 
                 res.redirect(
                     302,
-                    "https://cs3099user15.host.cs.st-andrews.ac.uk/?fedapi=1&username=" +
+                    "https://puzzleflix.vanaj.io/?fedapi=1&username=" +
                     user.username +
                     "&userid=" +
                     user.id +
