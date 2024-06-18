@@ -73,16 +73,16 @@ const clientSecrets = {
 };
 //client IDs includes all client ids that are valid to get requests for "/fedapi/"
 const clientIDsMap = new Map();
-clientIDsMap.set("10", "https://cs3099user10.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("11", "https://cs3099user11.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("12", "https://cs3099user12.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("13", "https://cs3099user13.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("14", "https://cs3099user14.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("15", "https://cs3099user15.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("16", "https://cs3099user16.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("17", "https://cs3099user17.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("18", "https://cs3099user18.host.cs.st-andrews.ac.uk");
-clientIDsMap.set("19", "https://cs3099user19.host.cs.st-andrews.ac.uk");
+clientIDsMap.set("10", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("11", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("12", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("13", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("14", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("15", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("16", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("17", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("18", "https://puzzleflix.vanaj.io");
+clientIDsMap.set("19", "https://puzzleflix.vanaj.io");
 
 //test login post handler
 router.post("/testlogin", (req, res) => {

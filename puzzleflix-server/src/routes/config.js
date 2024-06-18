@@ -20,7 +20,7 @@ let origins = [
 ];
 
 for (let i = 10; i < 20; i++) {
-    origins.push("https://cs3099user" + i + ".host.cs.st-andrews.ac.uk");
+    origins.push("https://puzzleflix.vanaj.io");
 }
 
 module.exports = {
