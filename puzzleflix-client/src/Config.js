@@ -7,10 +7,10 @@ let hosturl;
 let fullurl;
 
 if (environment == "LOCAL") {
-    hosturl = "http://localhost";
+    hosturl = "https://puzzleflix.vanaj.io";
     fullurl = hosturl + ":" + port;
 } else if (environment == "PRODUCTION") {
-    hosturl = "https://cs3099user15.host.cs.st-andrews.ac.uk";
+    hosturl = "https://puzzleflix.vanaj.io";
     fullurl = hosturl + "/api";
 } else {
     console.log("Incorrect environment: Options are LOCAL and PRODUCTION");
