@@ -7,7 +7,7 @@ console.log(environment);
 if (environment == "LOCAL") {
     const pool = mysql.createConnection({
         user: "cs3099user15",
-        host: "127.0.0.1",
+        host: "68.183.47.255",
         database: "cs3099user15_PuzzleFlix", // public database
         password: "y!pqA34S8sgEJy", // key to our school server's mariaDB 
         port: 3306,
@@ -25,7 +25,7 @@ if (environment == "LOCAL") {
 } else if (environment == "PRODUCTION") {
     const pool = mysql.createConnection({
         user: "cs3099user15",
-        host: "127.0.0.1",
+        host: "68.183.47.255",
         database: "cs3099user15_PuzzleFlix", // public database
         password: "y!pqA34S8sgEJy", // key to our school server's mariaDB 
         port: 3306,
