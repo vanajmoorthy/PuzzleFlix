@@ -109,24 +109,23 @@ router.post("/signup", async (req, res) => {
                             console.log(error);
                             res.status(500).send("Error Check Details!");
                         } else {
-                            console.log(
-                                "User " +
-                                req.body.username +
-                                " has been registered."
-                            );
-                            let tokens = jwtTokens.jwtTokens(
-                                id,
-                                req.body.username,
-                                req.body.email
-                            );
-                            res.cookie("refresh_token", tokens.refreshToken, {
-                                httpOnly: true,
-                            });
-                            delete result[0].password;
-                            tokens.user = result[0];
-                            res.json(tokens); //send back access token and refresh token
+                            console.log("User " + req.body.username + " has been registered.");
+                            let tokens = jwtTokens.jwtTokens(id, req.body.username, req.body.email);
+
+                            // Check if result is not empty and has at least one object
+                            if (result && result.length > 0) {
+                                delete result[0].password; // Ensure there's no accidental password exposure
+                                tokens.user = result[0];
+                            } else {
+                                // Handle the case where no user data is returned
+                                tokens.user = { id: id, username: req.body.username, email: req.body.email };
+                            }
+
+                            res.cookie("refresh_token", tokens.refreshToken, { httpOnly: true });
+                            res.json(tokens); // Send back access token and refresh token
                         }
                     });
+
                 } //end else
             }
         );
