@@ -71,6 +71,7 @@ const parseJwt = (token) => {
 
 router.post("/signup", async (req, res) => {
     console.log(req.body);
+    console.log("hellooo");
     try {
         db.checkUsernameEmail(
             [req.body.username, req.body.email],
