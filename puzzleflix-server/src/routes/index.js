@@ -69,6 +69,10 @@ const parseJwt = (token) => {
     }
 };
 
+router.get("/test", async (req, res) => {
+    res.send({ "everyhing": "working fine" });
+});
+
 router.post("/signup", async (req, res) => {
     console.log(req.body);
     console.log("hellooo");
