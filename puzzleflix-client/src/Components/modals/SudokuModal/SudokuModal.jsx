@@ -76,7 +76,7 @@ function SudokuModal(props) {
                 if (
                     puzzle[i][j].filled == true &&
                     puzzle[i][j].value !==
-                        originalPuzzle.current.puzzledata[i][j]
+                    originalPuzzle.current.puzzledata[i][j]
                 ) {
                     puzzle[i][j].filled = false;
                 }
@@ -373,12 +373,15 @@ function SudokuModal(props) {
                     return (
                         <div key={index} className="row">
                             {items.map((cell, sIndex) => {
+                                const cellClass = cell.filled
+                                    ? "cell cell-initial" // Apply different class for initial cells
+                                    : "cell";
                                 return (
                                     <div
                                         key={index + "" + sIndex}
                                         className={
                                             cell.conflicts == true &&
-                                            cell.filled == false
+                                                cell.filled == false
                                                 ? "square invalid-square"
                                                 : "square"
                                         }
@@ -391,15 +394,15 @@ function SudokuModal(props) {
                                             key={`${index}${sIndex}`}
                                             tabIndex={
                                                 `${index}${sIndex}` ==
-                                                activeIndex
+                                                    activeIndex
                                                     ? 1
                                                     : 0
                                             }
                                             className={
                                                 `${index}${sIndex}` ==
-                                                activeIndex
+                                                    activeIndex
                                                     ? "active"
-                                                    : "cell"
+                                                    : cellClass
                                             }
                                             name="cell"
                                             id="cell"
@@ -422,13 +425,10 @@ function SudokuModal(props) {
                 <div className="date">
                     <h2 className="date-label">Date Published</h2>
                     <h2 className="f-date">
-                        {`${
-                            puzzleObj.datepublished.split(" ")[0].split("-")[2]
-                        }/${
-                            puzzleObj.datepublished.split(" ")[0].split("-")[1]
-                        }/${
-                            puzzleObj.datepublished.split(" ")[0].split("-")[0]
-                        }`}
+                        {`${puzzleObj.datepublished.split(" ")[0].split("-")[2]
+                            }/${puzzleObj.datepublished.split(" ")[0].split("-")[1]
+                            }/${puzzleObj.datepublished.split(" ")[0].split("-")[0]
+                            }`}
                     </h2>
                 </div>
                 <div className="redo" onClick={redo}>

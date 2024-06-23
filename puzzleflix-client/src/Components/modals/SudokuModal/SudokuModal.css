@@ -13,6 +13,16 @@
     padding: 15px 10px 15px 10px;
 }
 
+.cell-initial {
+    border: 1px solid var(--black);
+    /* Thicker border for initial cells */
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Light background to differentiate */
+    color: var(--dark-grey);
+    font-weight: bold;
+}
+
+
 .generate-btn {
     background-color: var(--button-blue-save);
     color: white;
@@ -99,6 +109,7 @@
     border-radius: 5px;
     margin: 0px 10px 0px 10px;
 }
+
 .undo:hover,
 .redo:hover {
     transform: translateY(-2px);
@@ -111,6 +122,7 @@
     align-items: center;
     width: 300px;
 }
+
 .history-button {
     fill: var(--black);
     transition: 0.2s ease all;
@@ -130,7 +142,7 @@
     color: var(--black);
 }
 
-.square.invalid-square > .active {
+.square.invalid-square>.active {
     border: none;
     filter: brightness(80%);
     background-color: inherit;
@@ -163,7 +175,8 @@
     cursor: pointer;
     filter: brightness(80%);
 }
-.date > h2 {
+
+.date>h2 {
     text-align: center;
     margin-bottom: 0rem;
     font-size: 1.1rem;
@@ -213,6 +226,7 @@
     .puzzlepage-title {
         /* margin-top: 24rem !important; */
     }
+
     .cell,
     .active,
     .square {

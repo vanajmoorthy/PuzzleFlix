@@ -71,12 +71,12 @@
         flex-direction: column;
     }
 
-    .comments{
+    .comments {
         width: max-content;
     }
 
     .comment {
-        width:360px;
+        width: 360px;
     }
 
     .comments-col {
@@ -135,6 +135,7 @@
     align-items: center;
     width: 100%;
 }
+
 .comment-pfp {
     max-width: 30px;
     min-width: 30px;
@@ -160,7 +161,7 @@
     flex-direction: row;
 }
 
-.comments-header > h2 {
+.comments-header>h2 {
     margin-bottom: -6px;
     font-weight: 600;
     color: var(--black);
@@ -181,7 +182,7 @@
     align-items: flex-start;
     justify-content: space-evenly;
 
-    
+
 }
 
 .write-comment {
@@ -207,7 +208,7 @@
 }
 
 .comment {
-    width:360px;
+    width: 360px;
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--grey);
     display: flex;
@@ -216,8 +217,8 @@
 }
 
 .comment>div:nth-child(2)>p {
-    overflow-wrap:break-word;
-    overflow-x:auto;
+    overflow-wrap: break-word;
+    overflow-x: auto;
 }
 
 .comment-data {
@@ -243,7 +244,7 @@
     transition: 0.2s ease all;
 }
 
-.send-comment > img {
+.send-comment>img {
     width: 20px;
 }
 
@@ -265,13 +266,13 @@
     justify-content: space-between;
 }
 
-.comments > h2 {
+.comments>h2 {
     color: var(--black);
     font-weight: 600;
     font-size: 1.1rem;
 }
 
-.comment > div {
+.comment>div {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -285,8 +286,8 @@
     overflow-x: hidden;
 }
 
-#comment-holder > * {
-    margin-right: 10px;
+#comment-holder>* {
+    padding-right: 10px;
 }
 
 .no-comments-msg {
@@ -354,13 +355,13 @@
     cursor: pointer;
 }
 
-.rating-button > .star-outside,
-.rating-button > .star-inside {
+.rating-button>.star-outside,
+.rating-button>.star-inside {
     grid-column: 1;
     grid-row: 1;
 }
 
-.star-outside > svg {
+.star-outside>svg {
     fill: var(--black);
 }
 
@@ -374,7 +375,7 @@
     margin-top: 1rem;
 }
 
-.rating-button > .star-inside > svg {
+.rating-button>.star-inside>svg {
     margin-top: 2.5px;
     margin-left: 0px;
     fill: white;
@@ -417,6 +418,7 @@
     font-size: 1.5rem;
     color: red;
     font-weight: 500;
+    margin-top: 1rem;
 }
 
 .reset-btn {
@@ -435,7 +437,7 @@
     margin: 5px;
 }
 
-.reset-btn > img {
+.reset-btn>img {
     margin-left: 0.5rem;
 }
 
@@ -469,7 +471,7 @@
     margin: 5px;
 }
 
-.save-btn > img {
+.save-btn>img {
     margin-left: 0.5rem;
 }
 
@@ -582,7 +584,7 @@
     justify-content: center;
 }
 
-.copy-btn > img {
+.copy-btn>img {
     margin-left: 0.5rem;
 }
 
@@ -677,9 +679,11 @@
         margin: 0;
         width: 100%;
     }
+
     .row-one {
         margin-bottom: 0px;
     }
+
     .row-two {
         box-shadow: none;
         padding: 0rem 0rem 2rem 0rem;
@@ -688,6 +692,7 @@
         flex-direction: column;
         align-items: center;
     }
+
     .rating-title {
         margin-bottom: 0 !important;
     }
