@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Route Handling
-app.use("/fedapi", fedapiRouter);
+// app.use("/fedapi", fedapiRouter);
 app.use("/eightqueens", eightqueensRouter);
 app.use("/api", indexRouter);
 
