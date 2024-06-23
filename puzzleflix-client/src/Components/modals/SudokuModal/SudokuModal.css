@@ -14,12 +14,10 @@
 }
 
 .cell-initial {
-    border: 1px solid var(--black);
     /* Thicker border for initial cells */
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--input-grey) !important;
     /* Light background to differentiate */
-    color: var(--dark-grey);
-    font-weight: bold;
+    font-weight: 600 !important;
 }
 
 
