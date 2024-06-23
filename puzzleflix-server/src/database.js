@@ -46,7 +46,7 @@ const getAllUsers = (callback) => {
 
 // Retrieve user by name
 const getUsers = (values, callback) => {
-    let query = "SELECT * FROM users WHERE username = (?)";
+    let query = "SELECT * FROM users WHERE username = ?";
 
     pool.query(query, values, (err, res) => {
         if (err) {
@@ -64,7 +64,7 @@ const getUsers = (values, callback) => {
 
 // retrieve all users with username containing given string
 const getUsersMatching = (values, callback) => {
-    let query = "SELECT * FROM users WHERE username REGEXP (?)";
+    let query = "SELECT * FROM users WHERE username REGEXP ?";
 
     pool.query(query, values, (err, res) => {
         callback(err, res);
@@ -73,7 +73,7 @@ const getUsersMatching = (values, callback) => {
 
 // Retrieve user by name
 const getUsersID = (values, callback) => {
-    let query = "SELECT * FROM users WHERE userid = (?)";
+    let query = "SELECT * FROM users WHERE userid = ?";
 
     pool.query(query, values, (err, res) => {
         callback(err, res);
@@ -82,7 +82,7 @@ const getUsersID = (values, callback) => {
 
 // Retrieve user with u/p
 const loginUser = (values, callback) => {
-    let query = "SELECT * FROM users WHERE username = (?) AND password = (?)";
+    let query = "SELECT * FROM users WHERE username = ? AND password = ?";
     pool.query(query, values, (err, res) => {
         if (err) {
             console.log("Username or password invalid!");
