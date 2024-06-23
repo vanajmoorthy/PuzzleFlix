@@ -73,7 +73,7 @@ router.get("/test", async (req, res) => {
     res.send({ "everyhing": "working fine" });
 });
 
-app.get('/api/test', (req, res) => {
+router.get('/api/test', (req, res) => {
     res.json({ message: "API test route working" });
 });
 
