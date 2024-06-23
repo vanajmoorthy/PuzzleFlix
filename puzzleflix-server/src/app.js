@@ -27,7 +27,7 @@ app.use(cookieParser());
 // Route Handling
 app.use("/fedapi", fedapiRouter);
 app.use("/eightqueens", eightqueensRouter);
-app.use("/", indexRouter);
+app.use("/api", indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
