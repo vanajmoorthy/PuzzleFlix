@@ -17,8 +17,8 @@ mode with the ones defined below. */
     --button-green-hover: #1a972b;
     --button-blue-save: #3099ce;
     --button-blue-save-hover: #1c7aa8;
-    --white: #ffffff;
-    --black: black;
+    --white: #f3f3f3;
+    --black: #181818;
     --thumb-background: #eee;
     --shadow: #5c5c5c;
     --chess-red: #fc8181;
@@ -36,8 +36,8 @@ mode with the ones defined below. */
     --blur: rgba(0, 0, 0, 0.5);
     --chess-grey: #545151;
     --grey: #c4c4c4;
-    --white: #101010;
-    --black: #fff;
+    --white: #181818;
+    --black: #efefef;
     --cell-grey: #3d3d3d;
     --input-grey: rgb(45, 44, 44);
     --link-blue: #1da7ea;
@@ -53,7 +53,7 @@ mode with the ones defined below. */
     --thumb-background: #202020;
     --shadow: #000;
     --cell-text: invert(100%);
-    --puzzle-shadow: rgba(50, 50, 50, 0.3);
+    --puzzle-shadow: rgb(114 114 114 / 30%);
     --thumbnail: #2c2c2c;
     --comments-filter: invert(100%);
 }
