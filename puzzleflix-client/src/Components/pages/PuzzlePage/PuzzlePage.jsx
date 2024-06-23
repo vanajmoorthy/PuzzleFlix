@@ -61,6 +61,27 @@ function PuzzlePage(props) {
     const [hasSolvedBefore, setHasSolvedBefore] = useState(false); // Indicates whether user has solved this puzzle before
     const [elevation, setElevation] = useState(0); // The user elevation level
 
+    // Use useEffect to handle the component lifecycle
+    useEffect(() => {
+        // Function to handle key down events
+        const handleKeyDown = (event) => {
+            // Check if the key pressed is an arrow key
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+                // Prevent the default action to stop scrolling
+                event.preventDefault();
+            }
+        };
+
+        // Add event listener when the component mounts
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Return a cleanup function to remove the event listener
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
+
+
     // Converts puzzle data from array of string to array
     const convertFedPuzzle = (puzzleData) => {
         let newPuzzleData = [];
