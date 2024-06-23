@@ -21,6 +21,8 @@ let origins = [
 
 for (let i = 10; i < 20; i++) {
     origins.push("https://puzzleflix.vanaj.io");
+    origins.push("http://68.183.38.239:24100");
+
 }
 
 module.exports = {
