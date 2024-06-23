@@ -6,14 +6,14 @@ import Axios from "axios";
 import { port, fullurl } from "./../../../Config";
 
 // Assets 
-import SearchSvg from "./../../../assets/search.svg"
-import SearchWhiteSvg from "./../../../assets/search-white.svg"
+import SearchSvg from "./../../../assets/search.svg";
+import SearchWhiteSvg from "./../../../assets/search-white.svg";
 
 // Components 
 import ResultBanner from './ResultBanner';
 
-function SearchDropDown(props){
-    const {theme} = props;
+function SearchDropDown(props) {
+    const { theme } = props;
 
     const [results, setResults] = useState([]);
 
@@ -21,33 +21,32 @@ function SearchDropDown(props){
     // sends each keystroke to the backend to retrieve all possible users which match the current input 
     const handleSearchChange = async (text) => {
         if (text == "") {
-            setResults([])
+            setResults([]);
         }
-        else{
+        else {
             try {
                 const res = await Axios({
-                    method:"POST",
-                    withCredentials:true,
-                    url:fullurl + "/searchUsers",
-                    data:{
-                        username:text
+                    method: "POST",
+                    withCredentials: true,
+                    url: fullurl + "/searchUsers",
+                    data: {
+                        username: text
                     }
-                })
+                });
                 let data = res.data;
                 setResults(data);
             } catch (err) {
                 console.log("No Results");
             }
         }
-    }
+    };
 
-    if (localStorage.getItem("fedapi") == 0)
-    {
+    if (true) {
         return (
             <div className='search-wrapper'>
                 <div className="search">
                     <form>
-                        <input type="text" placeholder="Search Users" onChange={(e) => handleSearchChange(e.target.value)}/>
+                        <input type="text" placeholder="Search Users" onChange={(e) => handleSearchChange(e.target.value)} />
                     </form>
                     {theme == "light" ?
 
@@ -58,7 +57,7 @@ function SearchDropDown(props){
                 <div className='search-dropdown'>
                     {results.map((userObj, index) => {
                         // console.log(userObj)
-                        return (<ResultBanner userObj={userObj} key={index}/>)
+                        return (<ResultBanner userObj={userObj} key={index} />);
                     })}
                 </div>
             </div>

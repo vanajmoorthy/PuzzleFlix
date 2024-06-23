@@ -47,7 +47,7 @@ function PuzzlePage(props) {
     let puzzleObj = null;
     try {
         puzzleObj = location.state.puzzleObj;
-    } catch {}
+    } catch { }
 
     const originalPuzzle = useRef(null);
 
@@ -63,39 +63,39 @@ function PuzzlePage(props) {
 
     // Converts puzzle data from array of string to array
     const convertFedPuzzle = (puzzleData) => {
-        let newPuzzleData = []
+        let newPuzzleData = [];
         for (let i = 0; i < puzzleData.length; i++) {
-            let row = []
-            for (let j = 0; j < puzzleData.length; j++){
-                if (puzzleData[i][j] == ""){
-                    row.push(0)
+            let row = [];
+            for (let j = 0; j < puzzleData.length; j++) {
+                if (puzzleData[i][j] == "") {
+                    row.push(0);
                 }
-                else{
-                    row.push(parseInt(puzzleData[i][j]))
+                else {
+                    row.push(parseInt(puzzleData[i][j]));
                 }
             }
             newPuzzleData.push(row);
         }
         return JSON.stringify(newPuzzleData);
-    }
+    };
 
     // Converts array of ints to array of char 
     const convertPuzzleToString = (puzzleData) => {
-        let newPuzzleData = []
+        let newPuzzleData = [];
         for (let i = 0; i < puzzleData.length; i++) {
-            let row = []
-            for (let j = 0; j < puzzleData.length; j++){
-                if (puzzleData[i][j] == 0){
-                    row.push("")
+            let row = [];
+            for (let j = 0; j < puzzleData.length; j++) {
+                if (puzzleData[i][j] == 0) {
+                    row.push("");
                 }
-                else{
-                    row.push((puzzleData[i][j]).toString())
+                else {
+                    row.push((puzzleData[i][j]).toString());
                 }
             }
             newPuzzleData.push(row);
         }
         return newPuzzleData;
-    }
+    };
 
     /**
      * gets puzzle progress if user is logged in
@@ -472,7 +472,7 @@ function PuzzlePage(props) {
             
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(97, 96, 96, 1);transform: ;msFilter:;"><path d="M5.5 15a3.51 3.51 0 0 0 2.36-.93l6.26 3.58a3.06 3.06 0 0 0-.12.85 3.53 3.53 0 1 0 1.14-2.57l-6.26-3.58a2.74 2.74 0 0 0 .12-.76l6.15-3.52A3.49 3.49 0 1 0 14 5.5a3.35 3.35 0 0 0 .12.85L8.43 9.6A3.5 3.5 0 1 0 5.5 15zm12 2a1.5 1.5 0 1 1-1.5 1.5 1.5 1.5 0 0 1 1.5-1.5zm0-13A1.5 1.5 0 1 1 16 5.5 1.5 1.5 0 0 1 17.5 4zm-12 6A1.5 1.5 0 1 1 4 11.5 1.5 1.5 0 0 1 5.5 10z"></path></svg>
             `;
-        } catch (err) {}
+        } catch (err) { }
     };
 
     // check if the puzzle has been solved before
@@ -731,7 +731,7 @@ function PuzzlePage(props) {
                 setResultMessage("");
                 setModalState(true);
             } else {
-                console.log(puzzle)
+                console.log(puzzle);
                 setResultMessage("Invalid Solution");
             }
             // checkSolution(puzzle.progress, puzzle.puzzledata)
@@ -845,7 +845,7 @@ function PuzzlePage(props) {
             // If the puzzle is from the federation
             setFedPuzzle();
             setShowButtons(0);
-        } 
+        }
         // Check that user is logged in
         else if (localStorage.getItem("loginState") == 0 || !checkAccessToken() || localStorage.getItem("fedapi") == 1) {
             setShowButtons(0);
@@ -907,13 +907,13 @@ function PuzzlePage(props) {
                                             href={
                                                 "/profile" +
                                                 (puzzle.username ===
-                                                localStorage.getItem("username")
+                                                    localStorage.getItem("username")
                                                     ? "/?user=" +
-                                                      puzzle.username +
-                                                      "&type=0"
+                                                    puzzle.username +
+                                                    "&type=0"
                                                     : "/?user=" +
-                                                      puzzle.username +
-                                                      "&type=1")
+                                                    puzzle.username +
+                                                    "&type=1")
                                             }
                                         >
                                             {puzzle.username}
@@ -990,16 +990,16 @@ function PuzzlePage(props) {
                                 )}
                                 {(elevation >= 2 ||
                                     puzzle.username ===
-                                        localStorage.getItem("username")) && (
-                                    <button
-                                        className="delete-puzzle-btn"
-                                        type="button"
-                                        onClick={deletePuzzle}
-                                    >
-                                        Delete
-                                        <TrashIcon />
-                                    </button>
-                                )}
+                                    localStorage.getItem("username")) && (
+                                        <button
+                                            className="delete-puzzle-btn"
+                                            type="button"
+                                            onClick={deletePuzzle}
+                                        >
+                                            Delete
+                                            <TrashIcon />
+                                        </button>
+                                    )}
                                 {puzzle.puzzletype == "sudoku" && (
                                     <button
                                         aria-label="Click this to export the Sudoku as JSON"
@@ -1013,7 +1013,7 @@ function PuzzlePage(props) {
                             </div>
                         </div>
                         <div className="comments-col">
-                            {localStorage.getItem("loginState") == 1 && localStorage.getItem("fedapi") == 0 && (
+                            {localStorage.getItem("loginState") == 1 && (
                                 <div className="comments">
                                     <div className="comments-header">
                                         <h2>Comments</h2>
@@ -1069,10 +1069,10 @@ function PuzzlePage(props) {
                                                                             className="comment-pfp"
                                                                             src={
                                                                                 comment.avatar ===
-                                                                                ""
+                                                                                    ""
                                                                                     ? svg
                                                                                     : fullurl +
-                                                                                      comment.avatar
+                                                                                    comment.avatar
                                                                             }
                                                                             alt="?"
                                                                         />
@@ -1100,22 +1100,22 @@ function PuzzlePage(props) {
                                                                         "userid"
                                                                     ) ||
                                                                     elevation >=
-                                                                        2) && (
-                                                                    <button
-                                                                        className="trash-btn"
-                                                                        id={
-                                                                            "delete-comment:" +
-                                                                            comment.commentid
-                                                                        }
-                                                                        onClick={() =>
-                                                                            deleteComment(
+                                                                    2) && (
+                                                                        <button
+                                                                            className="trash-btn"
+                                                                            id={
+                                                                                "delete-comment:" +
                                                                                 comment.commentid
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        <TrashIcon className="trash-icon" />
-                                                                    </button>
-                                                                )}
+                                                                            }
+                                                                            onClick={() =>
+                                                                                deleteComment(
+                                                                                    comment.commentid
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            <TrashIcon className="trash-icon" />
+                                                                        </button>
+                                                                    )}
                                                             </div>
                                                         </div>
                                                     ))}
