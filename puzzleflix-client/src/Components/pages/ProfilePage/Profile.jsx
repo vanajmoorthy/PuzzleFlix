@@ -35,7 +35,7 @@ function ProfilePage(props) {
         theme,
     } = props;
 
-    
+
 
     let [searchParams, setSearchParams] = useSearchParams();
     const location = useLocation();
@@ -96,7 +96,7 @@ function ProfilePage(props) {
             let data = res.data;
 
             // Set profile picture
-            console.log(data.avatar)
+            console.log(data.avatar);
             setImage(fullurl + data.avatar);
 
             if (type == 0) {
@@ -107,7 +107,7 @@ function ProfilePage(props) {
             setCanRender(1);
         } catch (err) {
             console.error("Status 500");
-            console.log(err)
+            console.log(err);
             // logout(0);
         }
     };
@@ -140,25 +140,25 @@ function ProfilePage(props) {
         if (fedapi == 1) {
             type = 1;
             const fedUserData = {
-                userid : localStorage.getItem("userid"),
-                username : localStorage.getItem("username"),
-                firstname : localStorage.getItem("firstname"),
-                groupcreated : localStorage.getItem("group"),
-                surname : "",
-                lastname : "",
-                xp : 0,
-            }
+                userid: localStorage.getItem("userid"),
+                username: localStorage.getItem("username"),
+                firstname: localStorage.getItem("firstname"),
+                groupcreated: localStorage.getItem("group"),
+                surname: "",
+                lastname: "",
+                xp: 0,
+            };
 
             setUserData(fedUserData);
-            console.log(userData)
+            console.log(userData);
             setCanRender(1);
         }
         // If the user's access token as expired, log them out and send them to session expired page
         else if (type == 0 && !checkAccessToken() && localStorage.getItem("loginState") == 1) {
-            console.log("ONE")
+            console.log("ONE");
             logout(0);
-        } else if ( type == 0 && !checkAccessToken()) {
-            console.log("TWo")
+        } else if (type == 0 && !checkAccessToken()) {
+            console.log("TWo");
             // If user is not logged in, send them to home page
             logout(1);
         } else {
@@ -217,23 +217,23 @@ function ProfilePage(props) {
     };
 
 
-     // Converts puzzle data from array of string to array
-     const convertFedPuzzle = (puzzleData) => {
-        let newPuzzleData = []
+    // Converts puzzle data from array of string to array
+    const convertFedPuzzle = (puzzleData) => {
+        let newPuzzleData = [];
         for (let i = 0; i < puzzleData.length; i++) {
-            let row = []
-            for (let j = 0; j < puzzleData.length; j++){
-                if (puzzleData[i][j] == ""){
-                    row.push(0)
+            let row = [];
+            for (let j = 0; j < puzzleData.length; j++) {
+                if (puzzleData[i][j] == "") {
+                    row.push(0);
                 }
-                else{
-                    row.push(parseInt(puzzleData[i][j]))
+                else {
+                    row.push(parseInt(puzzleData[i][j]));
                 }
             }
             newPuzzleData.push(row);
         }
         return JSON.stringify(newPuzzleData);
-    }
+    };
 
     // Handler for uploading puzzle files to the platform - is called by upload button
     const puzzleUpload = (e) => {
@@ -249,7 +249,7 @@ function ProfilePage(props) {
             // Convert to object
             //const jsonObject = eval(contents);
             const jsonObject = JSON.parse(contents);
-            
+
             // Send imported puzzle data to backend
             try {
                 const res = await Axios({
@@ -268,7 +268,7 @@ function ProfilePage(props) {
                         puzzletype: "sudoku",
                         bgCSS: "RGB(0,255,0)",
                         puzzleImage: "",
-                        difficulty:jsonObject.difficulty
+                        difficulty: jsonObject.difficulty
                     },
                     url: fullurl + "/addPuzzle",
                 });
@@ -281,7 +281,7 @@ function ProfilePage(props) {
     };
 
     if (canRender == 1) {
-        
+
         // XP calculations
         const xp = type == 0 ? localStorage.getItem("xp") : userData.xp;
         const level = Math.floor((-17 + Math.sqrt(224 * xp + 289)) / 14);
@@ -290,7 +290,7 @@ function ProfilePage(props) {
         const xpThisLevel = 0.875 * level ** 2 + 2.125 * level;
         const xpToNextLevel = 0.875 * levelNext ** 2 + 2.125 * levelNext;
 
-        console.log(pfp)
+        console.log(pfp);
 
         return (
             <div className="profilepage-wrapper">
@@ -305,7 +305,7 @@ function ProfilePage(props) {
                                         src={
                                             type == 0
                                                 ? fullurl +
-                                                  localStorage.getItem("avatar")
+                                                localStorage.getItem("avatar")
                                                 : pfp
                                         }
                                     />
@@ -341,15 +341,15 @@ function ProfilePage(props) {
                                     <span className="underline">
                                         {"Name: "}
                                         <span className="light">
-                                        {type != 0
-                                            ? userData.fname +
-                                              " " +
-                                              userData.sname
-                                            : localStorage.getItem(
-                                                  "firstname"
-                                              ) +
-                                              " " +
-                                              localStorage.getItem("surname")}
+                                            {type != 0
+                                                ? userData.fname +
+                                                " " +
+                                                userData.sname
+                                                : localStorage.getItem(
+                                                    "firstname"
+                                                ) +
+                                                " " +
+                                                localStorage.getItem("surname")}
                                         </span>
                                     </span>
                                 </h2>
@@ -385,113 +385,114 @@ function ProfilePage(props) {
                                 </h2>
                             </div>
                         </div>
-                            <div className="bio-item row-five">
-                                <div className="row-five-item">
-                                    {/* https://www.npmjs.com/package/react-circular-progressbar */}
-                                    <div
-                                        title={
-                                            Math.ceil(
-                                                xpToNextLevel - xpThisLevel
-                                            ) + "xp until level up"
-                                        }
-                                        className="level-ring"
+                        <div className="bio-item row-five">
+                            <div className="row-five-item">
+                                {/* https://www.npmjs.com/package/react-circular-progressbar */}
+                                <div
+                                    title={
+                                        Math.ceil(
+                                            xpToNextLevel - xpThisLevel
+                                        ) + "xp until level up"
+                                    }
+                                    className="level-ring"
+                                >
+                                    <CircularProgressbarWithChildren
+                                        background={false}
+                                        backgroundPadding={5}
+                                        strokeWidth={10}
+                                        minValue={xpThisLevel}
+                                        value={xp}
+                                        maxValue={xpToNextLevel}
+                                        styles={{
+                                            // Customize the root svg element
+                                            root: {},
+                                            // Customize the path, i.e. the "completed progress"
+                                            path: {
+                                                // Path color
+                                                stroke: "#00ffff",
+                                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                                strokeLinecap: "butt",
+                                                // Customize transition animation
+                                                transition:
+                                                    "stroke-dashoffset 0.5s ease 0s",
+                                                // Rotate the path
+                                                transform: "rotate(0turn)",
+                                                transformOrigin:
+                                                    "center center",
+                                            },
+                                            // Customize the circle behind the path, i.e. the "total progress"
+                                            trail: {
+                                                // Trail color
+                                                stroke: "rgba(62, 152, 199, 100)",
+                                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                                strokeLinecap: "butt",
+                                                // Rotate the trail
+                                                transform: "rotate(0turn)",
+                                                transformOrigin:
+                                                    "center center",
+                                            },
+                                            // Customize the text
+                                            text: {
+                                                // Text color
+                                                fill: "#000",
+                                                // Text size
+                                                fontSize: "24px",
+                                            },
+                                            // Customize background - only used when the `background` prop is true
+                                            background: {
+                                                fill: "#fff",
+                                            },
+                                        }}
                                     >
-                                        <CircularProgressbarWithChildren
-                                            background={false}
-                                            backgroundPadding={5}
-                                            strokeWidth={10}
-                                            minValue={xpThisLevel}
-                                            value={xp}
-                                            maxValue={xpToNextLevel}
-                                            styles={{
-                                                // Customize the root svg element
-                                                root: {},
-                                                // Customize the path, i.e. the "completed progress"
-                                                path: {
-                                                    // Path color
-                                                    stroke: "#00ffff",
-                                                    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                                                    strokeLinecap: "butt",
-                                                    // Customize transition animation
-                                                    transition:
-                                                        "stroke-dashoffset 0.5s ease 0s",
-                                                    // Rotate the path
-                                                    transform: "rotate(0turn)",
-                                                    transformOrigin:
-                                                        "center center",
-                                                },
-                                                // Customize the circle behind the path, i.e. the "total progress"
-                                                trail: {
-                                                    // Trail color
-                                                    stroke: "rgba(62, 152, 199, 100)",
-                                                    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                                                    strokeLinecap: "butt",
-                                                    // Rotate the trail
-                                                    transform: "rotate(0turn)",
-                                                    transformOrigin:
-                                                        "center center",
-                                                },
-                                                // Customize the text
-                                                text: {
-                                                    // Text color
-                                                    fill: "#000",
-                                                    // Text size
-                                                    fontSize: "24px",
-                                                },
-                                                // Customize background - only used when the `background` prop is true
-                                                background: {
-                                                    fill: "#fff",
-                                                },
-                                            }}
-                                        >
-                                            <div className="inner-circle-new">
-                                                <h2 className="level-label">
-                                                    lvl
-                                                </h2>
-                                                <div className="circle-text">
-                                                    <h1 className="level-text">
-                                                        {level}
-                                                    </h1>
-                                                </div>
+                                        <div className="inner-circle-new">
+                                            <h2 className="level-label">
+                                                lvl
+                                            </h2>
+                                            <div className="circle-text">
+                                                <h1 className="level-text">
+                                                    {level}
+                                                </h1>
                                             </div>
+                                        </div>
 
-                                            <p className="xp-label">
-                                                {"(" + xp + "xp)"}
-                                            </p>
-                                        </CircularProgressbarWithChildren>
-                                    </div>
+                                        <p className="xp-label">
+                                            {"(" + xp + "xp)"}
+                                        </p>
+                                    </CircularProgressbarWithChildren>
                                 </div>
                             </div>
+                        </div>
 
-                            <div>
-                                <div className="elevation">
-                                    {type != 0
-                                                ? userData.accountelevation == 0
-                                                    ? "Solver"
-                                                : userData.accountelevation == 1
-                                                ?    "Author"
-                                                : userData.accountelevation == 2
-                                                    ? "Moderator"
+                        <div>
+                            <div className="elevation">
+                                {type != 0
+                                    ? userData.accountelevation == 0
+                                        ? "Solver"
+                                        : userData.accountelevation == 1
+                                            ? "Author"
+                                            : userData.accountelevation == 2
+                                                ? "Moderator"
                                                 : "Admin"
 
 
-                                                : localStorage.getItem("elevation") == 0
-                                                    ? "Solver"
-                                                : localStorage.getItem("elevation") == 1
-                                                    ? "Author"
-                                                : localStorage.getItem("elevation") == 2
-                                                    ? "Moderator"
+                                    : localStorage.getItem("elevation") == 0
+                                        ? "Solver"
+                                        : localStorage.getItem("elevation") == 1
+                                            ? "Author"
+                                            : localStorage.getItem("elevation") == 2
+                                                ? "Moderator"
                                                 : "Admin"}
 
-                                </div>
                             </div>
-                        
+                        </div>
+
                     </div>
                 </div>
 
                 {type == 0 ? (
                     <div>
-                        {level >= 1 && fedapi == 0 ? (
+                        {console.log(level)}
+                        {level >= 1 ? (
                             <div className="flex-col">
                                 <Link
                                     className="createpuzzle-btn"
@@ -501,8 +502,8 @@ function ProfilePage(props) {
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXElEQVRIS2NkoDFgpLH5DKMWEAxhkoLoPxCATGQEAoImQxUQrRCkftQCgsE6dIII5lKCXkJTgC11YU1FNLcAl8uHThyM+gA5BAZXWURqvgCXvORoIkXPqAUEQwsAVoQ4Gad6WJkAAAAASUVORK5CYII=" />
                                 </Link>
                             </div>
-                            
-                        
+
+
                         ) : (
                             <div className="flex-col">
                                 <button
@@ -517,10 +518,10 @@ function ProfilePage(props) {
                                     Creating puzzles unlocks at level 1!
                                 </p>
                             </div>
-                            
-                        
+
+
                         )}
-                        { fedapi == 0 &&
+                        {fedapi == 0 &&
                             <button
                                 onClick={(e) => uploadButton(e)}
                                 className="createpuzzle-btn"
@@ -561,13 +562,13 @@ function ProfilePage(props) {
                             </div>
                         </div>
                     </div>
-                ):
-                <ContentBelt
-                name={userData.username+"'s Puzzles"}
-                type="userspuzzles"
-                theme={theme}
-                user={userData.username}
-                />
+                ) :
+                    <ContentBelt
+                        name={userData.username + "'s Puzzles"}
+                        type="userspuzzles"
+                        theme={theme}
+                        user={userData.username}
+                    />
                 }
             </div>
         );
