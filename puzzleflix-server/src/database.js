@@ -51,14 +51,14 @@ const getUsers = (values, callback) => {
     pool.query(query, values, (err, res) => {
         if (err) {
             console.log(err);
-        }
-        if (res.length == 0) {
-            //console.log('res is ' + res);
-            err = "No users found";
+            return callback(err, null);
         }
 
-        //console.log(res);
-        callback(err, res);
+        if (!res || res.length === 0) {
+            return callback(null, []);
+        }
+
+        callback(null, res);
     });
 };
 
