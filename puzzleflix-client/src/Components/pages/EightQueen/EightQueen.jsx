@@ -50,19 +50,19 @@ function EightQueen(props) {
                     withCredentials: false,
                     params: {
                         uid: localStorage.getItem("userid"),
-                        accessToken : localStorage.getItem("accessToken"),
+                        accessToken: localStorage.getItem("accessToken"),
                     },
                     url: fullurl + "/eightqueens/getBoard",
                 });
 
                 responseData = await res.data;
 
-                console.log(res)
+                console.log(res);
             } catch (err) {
                 console.error(err);
             }
 
-            console.log(responseData)
+            console.log(responseData);
             let puzzle = [];
             if (responseData == "" || responseData == null) {
                 for (let i = 0; i < 8; i++) {
