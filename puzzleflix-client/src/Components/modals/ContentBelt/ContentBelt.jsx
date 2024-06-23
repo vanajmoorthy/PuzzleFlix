@@ -130,3 +130,4 @@ function ContentBelt(props) {
         );
     }
     return null; // Return null if no puzzles
+}
