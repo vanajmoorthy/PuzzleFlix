@@ -108,7 +108,7 @@ function App() {
     //retrieve puzzles from other groups
     const retrieveForeignPuzzles = async () => {
         try {
-        } catch (err) {}
+        } catch (err) { }
     };
 
     //check from cookies if we are logged in
@@ -220,6 +220,10 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                     <Route path="/TestLogin" element={<TestLogin />} />
                 </Routes>
+                <footer style={{ display: "flex", flexDirection: "column" }}>
+                    <p>Developed by Vanaj Moorthy, Jimmy Zhang, Paul Revell, Anthony Zhu, and Ray Li at the University of St Andrews</p>
+                    <p>Find source <a href="https://github.com/vanajmoorthy/PuzzleFlix/tree/main">here</a></p>
+                </footer>
             </BrowserRouter>
         </div>
     );
