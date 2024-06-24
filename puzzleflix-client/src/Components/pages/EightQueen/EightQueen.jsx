@@ -44,23 +44,23 @@ function EightQueen(props) {
             let responseData;
 
 
-            try {
-                const res = await Axios({
-                    method: "GET",
-                    withCredentials: false,
-                    params: {
-                        uid: localStorage.getItem("userid"),
-                        accessToken: localStorage.getItem("accessToken"),
-                    },
-                    url: fullurl + "/eightqueens/getBoard",
-                });
+            // try {
+            //     const res = await Axios({
+            //         method: "GET",
+            //         withCredentials: false,
+            //         params: {
+            //             uid: localStorage.getItem("userid"),
+            //             accessToken: localStorage.getItem("accessToken"),
+            //         },
+            //         url: fullurl + "/eightqueens/getBoard",
+            //     });
 
-                responseData = await res.data;
+            //     responseData = await res.data;
 
-                console.log(res);
-            } catch (err) {
-                console.error(err);
-            }
+            //     console.log(res);
+            // } catch (err) {
+            //     console.error(err);
+            // }
 
             console.log(responseData);
             let puzzle = [];
@@ -75,6 +75,7 @@ function EightQueen(props) {
             } else {
                 puzzle = JSON.parse(responseData);
             }
+            console.log(puzzle);
             setData(formatPuzzle(puzzle));
             setCanRender(true);
         };
