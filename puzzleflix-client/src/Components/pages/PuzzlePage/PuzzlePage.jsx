@@ -63,6 +63,7 @@ function PuzzlePage(props) {
 
     // Use useEffect to handle the component lifecycle
     useEffect(() => {
+        console.log(puzzle);
         // Function to handle key down events
         const handleKeyDown = (event) => {
             // Check if the key pressed is an arrow key
@@ -942,7 +943,7 @@ function PuzzlePage(props) {
                                     </h1>
 
                                     {puzzle.puzzletype == "eights" ? (
-                                        <InfoTooltip info="Click the squares next te empty spots to slide the tile. Arrange all the tiles to form an image to solve the puzzle." />
+                                        <InfoTooltip info="Click the squares next to the empty spots to slide the tile. Arrange all the tiles to form an image to solve the puzzle." />
                                     ) : (
                                         <InfoTooltip info="Use your arrow keys and number row on your keyboard to input numbers after clicking the sudoku board, or click a cell and then a number in the input row. Make sure each box, row, and column only has one of each digit." />
                                     )}

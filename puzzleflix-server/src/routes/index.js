@@ -683,7 +683,8 @@ router.post("/solvepuzzle", (req, res) => {
 const storage = multer.diskStorage({
     destination: "uploads/",
     filename: function (req, file, cb) {
-        cb(null, Date.now() + "-" + file.originalname); // use the timestamp and original filename
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + path.extname(file.originalname));
     },
 });
 
@@ -705,48 +706,35 @@ router.post("/changePfp", authorization.authenticateToken, (req, res) => {
     });
 });
 
-router.post("/upload", upload.single("image"), function (req, res) {
+router.post("/upload", upload.single("image"), async function (req, res) {
     console.log("Received image upload");
 
-    // Get the uploaded file
+    if (!req.file) {
+        return res.status(400).send("No file uploaded");
+    }
+
     const file = req.file;
+    const outputFilename = path.parse(file.filename).name + '.jpg';
+    const outputPath = path.join("uploads", outputFilename);
 
-    // Check if the uploaded file is a PNG image
-    if (!file) {
-        res.status(500).send(new Error("File error"));
-    } else if (path.extname(file.originalname).toLowerCase() === ".png") {
-        // Load the PNG image from disk
-        const inputBuffer = fs.readFileSync(file.path);
-
-        // Convert the image to JPEG with a white background (THIS IS AI GENERATED)
-        sharp(inputBuffer)
+    try {
+        await sharp(file.path)
             .flatten({ background: { r: 255, g: 255, b: 255 } })
             .jpeg()
-            .toBuffer((err, outputBuffer) => {
-                if (err) {
-                    console.error(err);
-                    res.status(500).send(new Error("Error converting image"));
-                    return;
-                }
+            .toFile(outputPath);
 
-                // Save the output JPEG image to disk
-                const newFilename = file.filename + ".jpg";
-                const outputPath = path.join("uploads/", newFilename);
-                fs.writeFileSync(outputPath, outputBuffer);
+        // Remove the original file
+        fs.unlinkSync(file.path);
 
-                // Send back the URL of the JPEG image
-                const url = "/uploads/" + file.filename + ".jpg";
-
-                //console.log(url)
-                res.status(200).send({ url: url });
-            });
-    } else {
-        const url = "/uploads/" + file.filename;
+        const url = "/uploads/" + outputFilename;
         res.status(200).send({ url: url });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error processing image");
     }
 });
 
-router.use("/uploads", express.static("uploads"));
+router.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 router.post("/generateRandomSudoku", (req, res) => {
 
