@@ -678,15 +678,11 @@ router.post("/solvepuzzle", (req, res) => {
 });
 
 
-const uploadsDir = path.join(__dirname, 'uploads');
 
-if (!fs.existsSync(uploadsDir)) {
-    fs.mkdirSync(uploadsDir, { recursive: true });
-}
 
-fs.chmodSync(uploadsDir, '0755');
+fs.chmodSync("/uploads", '0755');
 
-const stats = fs.statSync(uploadsDir);
+const stats = fs.statSync("/uploads");
 console.log(`Uploads directory permissions: ${stats.mode.toString(8)}`);
 /*
     AI generated functions
@@ -719,8 +715,7 @@ router.post("/changePfp", authorization.authenticateToken, (req, res) => {
 
 router.post("/upload", upload.single("image"), async function (req, res) {
     console.log("Received image upload");
-    console.log("Received image upload");
-    console.log(`Upload directory: ${uploadsDir}`);
+    console.log(`Upload directory: ${"/uploads"}`);
     console.log(`File path: ${req.file ? req.file.path : 'No file'}`);
 
     if (!req.file) {
@@ -743,6 +738,8 @@ router.post("/upload", upload.single("image"), async function (req, res) {
                 fs.unlinkSync(file.path);
 
                 const url = "/uploads/" + outputFilename;
+
+                console.log(url);
                 res.status(200).send({ url: url });
             });
     } catch (err) {
@@ -751,7 +748,8 @@ router.post("/upload", upload.single("image"), async function (req, res) {
     }
 });
 
-router.use("/uploads", express.static(path.join(__dirname, "uploads")));
+router.use("/uploads", express.static("uploads"));
+
 
 router.post("/generateRandomSudoku", (req, res) => {
 
