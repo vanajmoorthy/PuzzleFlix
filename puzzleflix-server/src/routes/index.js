@@ -681,11 +681,12 @@ router.post("/solvepuzzle", (req, res) => {
     AI generated functions
 */
 const storage = multer.diskStorage({
-    destination: "uploads/",
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, uniqueSuffix + path.extname(file.originalname));
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
     },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
 });
 
 const upload = multer({ storage: storage });
@@ -706,32 +707,29 @@ router.post("/changePfp", authorization.authenticateToken, (req, res) => {
     });
 });
 
-router.post("/upload", upload.single("image"), async function (req, res) {
-    console.log("Received image upload");
-
+router.post("/upload", upload.single("image"), function (req, res) {
     if (!req.file) {
-        return res.status(400).send("No file uploaded");
+        return res.status(400).send("No file uploaded.");
     }
 
-    const file = req.file;
-    const outputFilename = path.parse(file.filename).name + '.jpg';
-    const outputPath = path.join("uploads", outputFilename);
+    const filePath = path.join('uploads/', req.file.filename);
+    const newFilename = Date.now() + '-processed' + path.extname(req.file.originalname);
+    const outputPath = path.join('uploads/', newFilename);
 
-    try {
-        await sharp(file.path)
-            .flatten({ background: { r: 255, g: 255, b: 255 } })
-            .jpeg()
-            .toFile(outputPath);
+    // Process image with sharp
+    sharp(filePath)
+        .resize(300) // Example of resizing to 300px width
+        .toFormat('jpeg')
+        .toFile(outputPath, (err, info) => {
+            if (err) {
+                console.error('Error processing image:', err);
+                return res.status(500).send("Error processing image.");
+            }
 
-        // Remove the original file
-        fs.unlinkSync(file.path);
-
-        const url = "/uploads/" + outputFilename;
-        res.status(200).send({ url: url });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Error processing image");
-    }
+            // Successfully processed image
+            const url = "/uploads/" + newFilename;
+            res.status(200).send({ url: url });
+        });
 });
 
 router.use("/uploads", express.static(path.join(__dirname, "uploads")));
