@@ -220,9 +220,9 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                     <Route path="/TestLogin" element={<TestLogin />} />
                 </Routes>
-                <footer style={{ display: "flex", flexDirection: "column" }}>
-                    <p>Developed by Vanaj Moorthy, Jimmy Zhang, Paul Revell, Anthony Zhu, and Ray Li at the University of St Andrews</p>
-                    <p>Find source <a href="https://github.com/vanajmoorthy/PuzzleFlix/tree/main">here</a></p>
+                <footer style={{ display: "flex", flexDirection: "column", borderTop: "2px solid var(--button-red)", margin: "0rem 1rem", padding: "1rem 0rem" }}>
+                    <p style={{ color: "var(--black)" }}>Developed by Vanaj Moorthy, Jimmy Zhang, Paul Revell, Anthony Zhu, and Ray Li at the University of St Andrews</p>
+                    <p style={{ color: "var(--black)", marginTop: "1rem" }}>Find source <a style={{ color: "var(--link-blue)" }} href="https://github.com/vanajmoorthy/PuzzleFlix/tree/main">here</a></p>
                 </footer>
             </BrowserRouter>
         </div>
