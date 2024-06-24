@@ -719,6 +719,9 @@ router.post("/changePfp", authorization.authenticateToken, (req, res) => {
 
 router.post("/upload", upload.single("image"), async function (req, res) {
     console.log("Received image upload");
+    console.log("Received image upload");
+    console.log(`Upload directory: ${uploadsDir}`);
+    console.log(`File path: ${req.file ? req.file.path : 'No file'}`);
 
     if (!req.file) {
         return res.status(400).send("No file uploaded");
