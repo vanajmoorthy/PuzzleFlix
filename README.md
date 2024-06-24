@@ -5,7 +5,9 @@
 A puzzle playing website where you can play sudoku, multiple eights puzzles, and the eight queens puzzle.
 
 This was my sub-honours year long software engineering final project completed for my 3rd year at the University of St Andrews.
-Developed by a team of 5 in a simulated software engineer environment using Agile and SCRUM management techniques
+Developed by a team of 5 in a simulated software engineer environment using Agile and SCRUM management techniques.
+
+Awarded a grade of a first.
 
 ### Deployment
 
