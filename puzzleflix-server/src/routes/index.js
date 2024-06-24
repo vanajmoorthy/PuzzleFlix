@@ -677,6 +677,17 @@ router.post("/solvepuzzle", (req, res) => {
     }
 });
 
+
+const uploadsDir = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
+fs.chmodSync(uploadsDir, '0755');
+
+const stats = fs.statSync(uploadsDir);
+console.log(`Uploads directory permissions: ${stats.mode.toString(8)}`);
 /*
     AI generated functions
 */
