@@ -22,7 +22,7 @@ Developed by a team of 5 in a simulated software engineer environment using Agil
 -   Run a MariaDB server on the default port of `3306`
 -   `npm run dev` in both the puzzleflix-client and puzzleflix-server folders
 
-Check number of line of code by running `cloc--exclude-list-file=.clocignore .`
+Check number of line of code by running `cloc --exclude-list-file=.clocignore .`
 
 ### Dependencies
 
