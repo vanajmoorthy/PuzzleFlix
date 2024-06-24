@@ -129,9 +129,8 @@ function CreateModalEights(props) {
                 ) {
                     const piece = document.getElementById(temp);
                     piece.style.transition = "0.4s ease all";
-                    piece.style.transform = `translate(${
-                        ((currentY - prevY) * imageSize) / 3
-                    }px, ${((currentX - prevX) * imageSize) / 3}px)`;
+                    piece.style.transform = `translate(${((currentY - prevY) * imageSize) / 3
+                        }px, ${((currentX - prevX) * imageSize) / 3}px)`;
 
                     const offset = piece.style.backgroundPosition;
                     const img = piece.style.backgroundImage;
@@ -223,8 +222,11 @@ function CreateModalEights(props) {
                 data: form,
                 url: fullurl + "/upload",
             }).then((response) => {
+                console.log(response);
+
                 setImageUrl(response.data.url);
             });
+
         } catch (err) {
             console.error(err);
         }
@@ -259,16 +261,15 @@ function CreateModalEights(props) {
                                                 backgroundImage:
                                                     cell.value == 9
                                                         ? "none"
-                                                        : `url(${
-                                                              fullurl +
-                                                              puzzleImage
-                                                          })`,
+                                                        : `url(${fullurl +
+                                                        puzzleImage
+                                                        })`,
                                                 backgroundPosition:
                                                     cell.value == 9
                                                         ? ""
                                                         : offsets[
-                                                              cell.value - 1
-                                                          ],
+                                                        cell.value - 1
+                                                        ],
                                             }}
                                             onClick={() =>
                                                 handleClick(`${index}${sIndex}`)
@@ -276,7 +277,7 @@ function CreateModalEights(props) {
                                             key={`${index}${sIndex}`}
                                             className={
                                                 `${index}${sIndex}` ==
-                                                activeIndex
+                                                    activeIndex
                                                     ? "eights-active"
                                                     : "eights-cell"
                                             }

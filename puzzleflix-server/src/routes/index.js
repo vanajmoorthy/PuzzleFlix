@@ -708,6 +708,7 @@ router.post("/changePfp", authorization.authenticateToken, (req, res) => {
 });
 
 router.post("/upload", upload.single("image"), function (req, res) {
+    console.log("Received image upload");
     if (!req.file) {
         return res.status(400).send("No file uploaded.");
     }
@@ -715,6 +716,9 @@ router.post("/upload", upload.single("image"), function (req, res) {
     const filePath = path.join('uploads/', req.file.filename);
     const newFilename = Date.now() + '-processed' + path.extname(req.file.originalname);
     const outputPath = path.join('uploads/', newFilename);
+
+    console.log(filePath);
+    console.log(outputPath);
 
     // Process image with sharp
     sharp(filePath)
