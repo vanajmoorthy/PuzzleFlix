@@ -680,9 +680,9 @@ router.post("/solvepuzzle", (req, res) => {
 
 
 
-fs.chmodSync("/uploads", '0755');
+fs.chmodSync("./uploads", '0755');
 
-const stats = fs.statSync("/uploads");
+const stats = fs.statSync("./uploads");
 console.log(`Uploads directory permissions: ${stats.mode.toString(8)}`);
 /*
     AI generated functions
