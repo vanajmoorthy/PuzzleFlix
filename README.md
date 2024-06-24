@@ -1,37 +1,26 @@
 # PuzzleFlix
 
-Group 15's CS3099 SWE final project.
+[Demo](https://puzzleflix.vanaj.io)
+
 A puzzle playing website where you can play sudoku, multiple eights puzzles, and the eight queens puzzle.
 
-The git repository for this project can be found at [https://gitlab.cs.st-andrews.ac.uk/cs3099group15/project-code](https://gitlab.cs.st-andrews.ac.uk/cs3099group15/project-code)
+This was my sub-honours year long software engineering final project completed for my 3rd year at the University of St Andrews.
+Developed by a team of 5 in a simulated software engineer environment using Agile and SCRUM management techniques
 
 ### Deployment
 
--   ssh `<your_cs_username>.host.cs.st-andrews.ac.uk`
--   ssh `cs3099user15@cs3099user15.host.cs.st-andrews.ac.uk`
--   Clone repo or cd ~/Documents/project-code
+-   Clone repo 
 -   npm install in both the puzzleflix-client and puzzleflix-server folders
 -   `git pull` if you haven't just cloned or have an old version
 -   ./build.sh in both folder
--   Access at [cs3099user15.host.cs.st-andrews.ac.uk](cs3099user15.host.cs.st-andrews.ac.uk) whilst on the school of computer science network.
+
 
 ### Running locally for development
 
 -   Clone repo
 -   `npm install` in both the puzzleflix-client and puzzleflix-server folders
--   Run a proxy through the school network to access the database at host server with `ssh cs3099user15.host.cs.st-andrews.ac.uk -L 3306:localhost:3306 -N`
+-   Run a MariaDB server on the default port of `3306`
 -   `npm run dev` in both the puzzleflix-client and puzzleflix-server folders
-
-### Access to the database (sudo user name cs3099user15):
-
--   SSH to the pseudo user's host server with `ssh <your-cs-userame>@cs3099user15.host.cs.st-andrews.ac.uk`
--   Become the pseudo user with `sudo -u cs3099user15 bash -l`
--   Run `cd` to change to the pseudo user's home directory
--   Then run the mysql-initial-settings command to display the MariaDB password for the pseudo user with `mysql-initial-settings`
-
-### For command line access on your host server run:
-
-`/usr/bin/mysql --defaults-extra-file=/var/cs/mysql/cs3099user15/my.cnf -u cs3099user15`
 
 Check number of line of code by running `cloc--exclude-list-file=.clocignore .`
 
