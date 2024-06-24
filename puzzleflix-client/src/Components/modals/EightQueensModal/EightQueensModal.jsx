@@ -402,7 +402,7 @@ function EightQueensModal(props) {
                                                 <div
                                                     className={
                                                         `${index}${rIndex}` ==
-                                                        activeIndex.current
+                                                            activeIndex.current
                                                             ? "active-eight"
                                                             : ""
                                                     }
@@ -423,7 +423,7 @@ function EightQueensModal(props) {
                         })}
                     </div>
                     <div className="btn-holder">
-                        {loginState == 1 ? (
+                        {/* {loginState == 1 ? (
                             <>
                                 <button
                                     className="save-btn"
@@ -436,7 +436,7 @@ function EightQueensModal(props) {
                             </>
                         ) : (
                             ""
-                        )}
+                        )} */}
                         <button className="submit-btn" onClick={submit}>
                             Submit
                             <SubmitIcon className="submit-icon"></SubmitIcon>
