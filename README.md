@@ -35,7 +35,6 @@ Check number of line of code by running `cloc --exclude-list-file=.clocignore .`
 -   vite
 -   react-confetti
 -   react-circular-progressbar
--   server
 
 #### Server
 
